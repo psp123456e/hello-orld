@@ -13,15 +13,24 @@ class ViewController: UIViewController {
         super.viewDidLoad()
             
     }
-     
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+    
     @IBAction func showMessage(sender:UIButton){
-        let alertController = UIAlertController(title: "Welcom to My First App", message:" Hello World",preferredStyle: UIAlertController.Style.alert)
-        alertController.addAction(UIAlertAction(title:"ok",style:UIAlertAction.Style.default,handler :nil))
-        present(alertController, animated: true ,completion: nil)
+        let emojiDict = ["😂":"happy","🥲":"sad","😇":"angel","😜":"face"]
+        let selectedbutton = sender
+        if let wordToLookup = selectedbutton.titleLabel?.text{
+            let meaning = emojiDict[wordToLookup]
+            
+            let alertController = UIAlertController(title: "Meaning", message: meaning, preferredStyle: UIAlertController.Style.alert)
+            alertController.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+            present(alertController, animated: true, completion: nil)
+        }
     }
-
-        // Do any additional setup after loading the view.
-    }
+    
+}
+    
 
     
 
